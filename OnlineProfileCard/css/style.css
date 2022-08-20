@@ -1,14 +1,233 @@
-@charset 'utf-8';
-@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+@charset 'utf-8'; /* 스타일 시트 문서 인코딩 방식 설정 */
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap"); /* 폰트 연결 구문 추가 */
 
 * {
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
 }
+
 ul {
-	list-style: none;
+	list-style: none; /* <ul>, <li> 앞에 나오는 점과 숫자 제거 */
 }
+
 a {
-	text-decoration: none;
+	text-decoration: none; /* 텍스트 밑줄 제거(기본값) */
+}
+
+/* member1.html */
+body.member1{
+	background-color: #ebfaff;
+}
+
+body.member1 section article.profile img{
+	box-shadow: 5px 15px 30px rgba(173, 216, 230, 0.8);
+}
+
+body.member1 section a.btnView{
+	background: linear-gradient(45deg, #4affff, #35e0f7);
+	box-shadow: 5px 10px 20px rgba(0, 255, 255, 0.493);
+}
+
+/* member2.html */
+body.member2{
+	background-color: #edffeb;
+}
+
+body.member2 section article.profile img{
+	box-shadow: 5px 15px 30px #bdccb783;
+}
+
+body.member2 section a.btnView{
+	background: linear-gradient(45deg, #a0ff9d, #55f5b2);
+	box-shadow: 5px 10px 20px rgba(33, 250, 105, 0.3);
+}
+
+/* member3.html */
+body.member3{
+	background-color: #fff3fd;
+}
+
+body.member3 section article.profile img{
+	box-shadow: 5px 15px 30px rgba(252, 99, 214, 0.2);
+}
+
+body.member3 section a.btnView{
+	background: linear-gradient(45deg, #ef74ff, #ff11c4);
+	box-shadow: 5px 10px 20px rgba(255, 17, 196, 0.357);
+}
+
+/* member4.html */
+body.member4{
+	background-color: #f5f0ff;
+}
+
+body.member4 section article.profile img{
+	box-shadow: 5px 15px 30px rgba(183, 82, 250, 0.2);
+}
+
+body.member4 section a.btnView{
+	background: linear-gradient(45deg, #8e74ff, #a011ff);
+	box-shadow: 5px 10px 20px rgba(160, 17, 255, 0.4);
+}
+
+section{
+	width: 340px;
+	padding: 30px;
+	background-color: #fff;
+	margin: 50px auto; /* 상하 여백 50px, 좌우는 자동 설정 (가운데 정렬) */
+	box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+}
+
+/* section의 자식 nav 지정. 즉, nav의 너비를 부모 요소인 section의 100%으로 잡는다.*/
+section nav.menu{
+	width: 100%
+}
+
+section nav.menu::after{
+	content: "";
+	display: block;
+	clear: both; /* after를 이용하여 float 해제 */
+}
+
+section nav.menu a{
+	font-size: 20px;
+	color: #666;
+}
+
+/*
+	nth-of-type과 nth-child의 차이
+	 -> nth-of-type : 부모 요소의 특정 자식 요소 중 n번째
+	 -> nth-child : 부모 요소의 모든 요소들 중 n번째
+*/
+section nav.menu a:nth-of-type(1){
+	float: left;
+}
+
+section nav.menu a:nth-of-type(2){
+	float: right;
+}
+
+section article.profile{
+	width: 100%;
+	text-align: center;
+}
+
+section article.profile img{
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	margin-bottom: 20px;
+}
+
+section article.profile h1{
+	font-weight: bold;
+	font-size: 22px;
+	font-family: "arial";
+	line-height: 1;  /* 줄 높이 정하기 */
+	color: #555;
+	margin-bottom: 5px;
+}
+
+section article.profile h2{
+	font-weight: normal;
+	font-size: 12px;
+	font-family: "arial";
+	color: #bbb;
+	margin-bottom: 30px;
+}
+
+section a.btnView{
+	display: block;
+	width: 180px;
+	height: 32px;
+	margin: 0px auto 20px;
+	background-color: #444;
+	border-radius: 16px;
+	font-weight: bold;
+	font-size: 10px;
+	font-family: "arial";
+	color: #fff;
+	line-height: 32px;
+	text-align: center;
+	/* linear-gradient는 두 개의 색상을 하나로 합친다. (그라데이션 느낌)*/
+	background: linear-gradient(45deg, #4affff, #35e0f7);
+	box-shadow: 5px 10px 20px rgba(0, 255, 255, 0.493);
+}
+
+section ul.contact{
+	margin-bottom: 25px;
+}
+
+section ul.contact li{
+	width: 100%;
+	padding: 10px 0px;
+	border-bottom: 1px solid #eee;
+}
+
+/* 위 li 태그에 border-bottom을 명시하였기에 2개의 li 태그 모두 하단 선이 생김. 따라서 마지막 요소만 제거. */
+section ul.contact li:last-child{
+	border-bottom: none;
+}
+
+section ul.contact li i{
+	width: 20%;
+	text-align: center;
+	color: #555;
+	font-size: 15px;
+	text-shadow: 2px 2px 2px #ddd;
+}
+
+section ul.contact li span{
+	font-weight: normal;
+	font-size: 11px;
+	font-family: "orbitron";
+	color: #555;
+	letter-spacing: 1px; /* 글자 사이의 간격 설정 (단어 사이의 간격은 word-spacing)*/
+}
+
+section nav.others{
+	width: 100%;
+	text-align: center;
+}
+
+section nav.others a{
+	/*
+		a 요소는 인라인 요소이므로 float : left로 배치할 필요 X.
+		하지만 해당 요소의 너비와 높이를 지정할 수 없기에 inline-block을 추가하여 인라인과 블록 속성을
+		동시에 가지게 한다.
+	*/
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	margin: 0px 10px;
+	opacity: 1; /* 흐리게 만들기 */
+	filter: saturate(0.7); /* 채도 변경 */
+}
+
+section nav.others a.on{
+	opacity: 1; /* 흐리게 만들기 */
+	filter: saturate(0.7); /* 채도 변경 */
+}
+
+section nav.others a:nth-of-type(1){
+	background-color: #35e0f7;
+	box-shadow: 5px 5px 10px rgba(74, 255, 255, 0.7);
+}
+
+section nav.others a:nth-of-type(2){
+	background-color: #55f5cd;
+	box-shadow: 5px 5px 10px rgba(85, 245, 178, 0.7);
+}
+
+section nav.others a:nth-of-type(3){
+	background-color: #ff80df;
+	box-shadow: 5px 5px 10px rgba(255, 128, 223, 0.7);
+}
+
+section nav.others a:nth-of-type(4){
+	background-color: #a794fd;
+	box-shadow: 5px 5px 10px rgba(74, 255, 255, 0.7);
 }
