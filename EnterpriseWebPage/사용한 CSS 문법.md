@@ -16,7 +16,7 @@
   
  - static : 모든 태그의 기본값이며, 차례대로 왼쪽에서 오른쪽, 위에서 아래로 쌓인다.  
  - relative : 태그의 위치를 살짝 변경하고 싶을 때. top, right, bottom, left 속성을 사용하여 위치 조절이 가능하다.  
- - absolute : static 속성을 가지고 있지 않은 부모를 기준으로 움직인다. 즉, `relative`가 *static*인 상태를 기준으로 주어진 픽셀만큼 움직인다면 `absolute`는 **static이 아닌** 부모를 대상으로 움직인다. 이때, **부모 중 포지션이 `relative`, `absolute`, `fixed`인 태그가 없다면 가장 위의 태그 `body`가 기준이 된다.  
+ - absolute : static 속성을 가지고 있지 않은 부모를 기준으로 움직인다. 즉, `relative`가 *static*인 상태를 기준으로 주어진 픽셀만큼 움직인다면 `absolute`는 **static이 아닌** 부모를 대상으로 움직인다. 이때, **부모 중 포지션이 `relative`, `absolute`, `fixed`인 태그가 없다면 가장 위의 태그 `body`가 기준이 된다.**  
  - fixed : `fixed`로 설정된 태그는 해당 위치에 **고정**된다.  
 
 # overflow

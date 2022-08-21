@@ -7,4 +7,178 @@
 }
 
 
+body{
+	/* 풀 스크린 지정 */
+	width: 100%;
+	height: 100vh;
+	overflow: hidden; /* 넘치면 보이지 않도록. (잘림) 즉, 자식 요소가 영역에서 벗어나면 스크롤바 X*/
+	background-color: #b1e1e2;
+	/* 키프레임 호출 */
+	animation: sky linear 20s infinite;
+}
 
+section{
+	width: 1000px;
+	height: 400px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -70%);
+	/* border: 1px solid red;  */ /* section의 크기 파악하기 위한 틀 */
+}
+
+h1{
+	width: 1000px;
+	/* h1이 section보다 먼저 작성되었지만 absolute를 사용하여 하단에 위치하게 만든다. */
+	position: absolute; 
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, 150%);
+	font: 92px/1 "Poiret one";
+	color: #fff;
+	text-align: center;
+	/* 키프레임 호출 */
+	animation: day linear 20s infinite;
+}
+
+section{
+	width: 1000px;
+	height: 400px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -70%);
+}
+
+section .sky{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+section .sky .sun{
+	position: absolute;
+	top: -150px;
+	left: 50%;
+	margin-left: -100px;
+	transform-origin: center 500px; /* 태양의 중심축을 아래쪽으로 500px만큼 이동한다. */
+	/* 키프레임 호출 */
+	animation: sun linear 20s infinite;
+}
+
+section .sky .cloud1{
+	position: absolute;
+	top: -30px;
+	left: 10%;
+	/* 키프레임 호출 */
+	animation: flow linear 10s infinite;
+}
+
+section .sky .cloud2{
+	position: absolute;
+	top: 20px;
+	left: 0%;
+	/* 키프레임 호출 */
+	animation: flow linear 20s infinite;
+}
+
+section .town .circle{
+	position: absolute;
+	bottom: 104px;
+	left: 50%;
+	margin-left: -165px;
+	opacity: 0.7; /* 불투명도. 흐릿하게 만든다. */
+	/* 키프레임 호출 */
+	animation: rotation linear 20s infinite;
+}
+
+/* day 아래에 night를 겹쳐서 깔아놓는다. animation 속성을 이용하여 day를 살짝 숨기고 night 출력.*/
+section .town .night{
+	position: absolute;
+	bottom: 0px;
+	left: 40px;
+}
+
+section .town .day{
+	position: absolute;
+	bottom: 0px;
+	left: 40px;
+	/* 키프레임 호출 */
+	animation: day linear 20s infinite;
+}
+
+section .people{
+	width : 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	/* 키프레임 호출 */
+	animation: day linear 20s infinite;
+}
+
+section .people .man{
+	position: absolute;
+	left: 0%;
+	bottom: 0px;
+	/* 키프레임 호출 */
+	animation: flow linear 7s infinite;
+}
+
+section .people .family{
+	position: absolute;
+	left: 0%;
+	bottom: 0px;
+	/* 키프레임 호출 */
+	animation: flow linear 20s infinite;
+}
+
+/* KeyFrames 설정 */
+
+/* KeyFrams 주기
+	> 0~25% : 새벽에서 아침
+	> 25~50% : 오전에서 낮
+	> 50~75% : 낮에서 저녁  
+	> 75~100% : 밤
+*/
+
+/* 관람차 키프레임 - 360도 회전하는 애니메이션 */
+@keyframes rotation{
+	0% {transform: rotate(0deg);}
+	100% {transform: rotate(360deg);}
+}
+
+/* 배경 키프레임 - 배경색 변경 */
+@keyframes sky{
+	0% {background-color: #b08fcc;}
+	25% {background-color: #b1e1e2;}
+	50% {background-color: #fcd2e2;}
+	75% {background-color: #636888;}
+	100% {background-color: #b08fcc;}
+}
+
+/* 태양 키프레임 - 태양 회전 */
+@keyframes sun{
+	0% {opacity: 0; transform: rotate(-90deg);}
+	25% {opacity: 1; transform: rotate(-30deg);}
+	50% {opacity: 1; transform: rotate(30deg);}
+	75% {opacity: 0; transform: rotate(90deg);}
+	100% {opacity: 0; transform: rotate(-90deg);}
+}
+
+/* 밤 키프레임 - 밤에 특정 요소 숨기기 */
+@keyframes day{
+	0% {opacity: 0;}
+	25% {opacity: 1;}
+	50% {opacity: 1;}
+	75% {opacity: 0;}
+	100% {opacity: 0;}
+}
+
+/* 사람, 구름 키프레임 - 왼쪽에서 오른쪽으로 이동 */
+@keyframes flow{
+	0% {left: 0%; opacity: 0;}
+	10% {opacity: 1;}
+	80% {opacity: 1;}
+	100% {left: 90%; opacity: 0;}
+}
