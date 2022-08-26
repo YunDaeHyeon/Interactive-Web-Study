@@ -34,3 +34,8 @@ section>ul { border : 1px dotted black; }
 - 세로 위치 값 : top, center, bottom, 백분율, 길이  
 - initial : 기본값으로 설정  
 - inherit : 부모 요소의 속성을 상속받는다.  
+
+# z-index
+ : 요소의 **수직 위치를 정하는 속성**  
+ : 기본값 : `auto`
+`position` 속성을 이용하면 요소를 겹치게 놓을 수 있다. 이때, 요소들의 *수직 위치*를 `z-index` 속성으로 정한다. 값은 **정수**이며 **숫자가 클 수록 위로 올라오고, 숫자가 작을 수록 아래로 내려간다.**
