@@ -26,49 +26,6 @@ body{
     background : #000;
 }
 
-/*
-*
-* 3D 배치
-*
-*/
-
-/*
- 총 8개의 면을 가지고 있기에 각 article이 회전해야하는 각도는 360°에서 8로 나눈 45°.
- 따라서 각 face당 45°씩 Y축으로 회전시킨다.
-*/
-
-.face1{
-    transform: rotateY(0deg) translateZ(-764px);
-}
-
-.face2{
-    transform: rotateY(45deg) translateZ(-764px);
-}
-
-.face3{
-    transform: rotateY(90deg) translateZ(-764px);
-}
-
-.face4{
-    transform: rotateY(135deg) translateZ(-764px);
-}
-
-.face5{
-    transform: rotateY(180deg) translateZ(-764px);
-}
-
-.face6{
-    transform: rotateY(225deg) translateZ(-764px);
-}
-
-.face7{
-    transform: rotateY(270deg) translateZ(-764px);
-}
-
-.face8{
-    transform: rotateY(315deg) translateZ(-764px);
-}
-
 /* ============== */
 
 .wrap{
@@ -88,12 +45,15 @@ body{
 
 .wrap #circle{
     width: 600px;
-    height: 725px; /* windows : 800px, mac : 725px */
+    height: 800px; /* windows : 800px, mac : 725px */
     position: absolute;
-    top: 58%; /* windows : 50%, mac : 58 */
+    top: 50%; /* windows : 50%, mac : 58 */
     left: 50%;
     margin-top: -400px;
     margin-left: -300px;
+    /* 3D 애니메이션 키프레임 지정 */ 
+    transform-style: preserve-3d;
+    animation: ani linear 30s infinite;
 }
 
 .wrap #circle article{
@@ -570,4 +530,45 @@ body{
     position: absolute;
     top: 0px;
     right: 40px;
+}
+
+/*
+*
+* 3D 배치
+*
+*/
+
+/*
+ 총 8개의 면을 가지고 있기에 각 article이 회전해야하는 각도는 360°에서 8로 나눈 45°.
+ 따라서 각 face당 45°씩 Y축으로 회전시킨다.
+*/
+
+.face1{
+    transform: rotateY(0deg) translateZ(-764px);
+}
+.face2{
+    transform: rotateY(45deg) translateZ(-764px);
+}
+.face3{
+    transform: rotateY(90deg) translateZ(-764px);
+}
+.face4{
+    transform: rotateY(135deg) translateZ(-764px);
+}
+.face5{
+    transform: rotateY(180deg) translateZ(-764px);
+}
+.face6{
+    transform: rotateY(225deg) translateZ(-764px);
+}
+.face7{
+    transform: rotateY(270deg) translateZ(-764px);
+}
+.face8{
+    transform: rotateY(315deg) translateZ(-764px);
+}
+
+@keyframes ani{
+    0% {transform: rotateY(0deg);}
+    100% {transform:rotateY(360deg);}
 }
