@@ -72,10 +72,12 @@ figure section{
 	height: 65vh;
 	position: absolute;
 	left: 50%;
-	top: 50%;
-	margin-top: -32vh;
+	top: 140%; /* 세로 위치값 조정 */
+	margin-top: -25vh; /* 세로 위치값 조정 */
 	margin-left: -10vw;
-	border: 1px solid aqua;
+	/* border: 1px solid aqua; */
+	/* 애니메이션 추가 */
+	transition: 1s;
 }
 
 /* 개별 음악 플레이어 패널 */
@@ -85,7 +87,7 @@ figure section article{
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	border: 1px solid aqua;
+	/* border: 1px solid aqua; */
 }
 
 /* 음악 플레이어 패널 콘텐츠 그룹 */
@@ -103,5 +105,270 @@ figure section article .inner{
 	box-shadow: 10px 10px 20px rgba(0,0,0, 0.1);
 	opacity: 0.6; /* 투명도 낮춤으로 비활성 */
 	transform: scale(0.8); /* 축소시켜서 비활성 */
+	transition: opacity 1s, transform 1s;
 }
 
+/* on 클래스 */
+figure section article.on .inner{
+	opacity: 0.9;
+	transform: scale(1.1);
+	/* on 클래스 애니메이션 */
+	transition: opacity 1s, transform 1s;
+}
+
+/* 커버 이미지가 들어갈 프레임 .pic */
+figure section article .inner .pic{
+	width: 15vw;
+	height: 15vw;
+	margin: 0px auto;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-position: 200%; /* 배경 이미지의 위치를 조절하여 .pic의 이미지 숨김 */
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+figure section article .inner .pic::before,
+figure section article .inner .pic::after{
+	content: "";
+	display: block;
+	width: inherit;
+	height: inherit;
+	border-radius: inherit;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background-image: inherit; /* 부모 요소 pic으로부터 이미지 상속 */
+	background-position: center;
+	background-repeat: inherit;
+	background-size: cover;
+	transform-origin: center center;
+}
+
+/* 커버 이미지 아래에 은은하게 깔리는 그림자 */
+figure section article .inner .pic::before{
+	transform: translateY(10%);
+	filter: blur(20px) brightness(1.6); /* 이미지 블러 처리하고 발계 적용 */
+}
+
+figure section article .inner .pic .dot{
+	width: 3vw;
+	height: 3vw;
+	border-radius: 50%;
+	background: #e4f1ff;
+	position: relative;
+	z-index: 3;
+	box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1); /* inset으로 안쪽에 그림자 생성 */
+}
+
+/* 옵션 박스 */
+
+figure section article .inner .txt{
+	text-align: center;
+	position: relative;
+	z-index: 3;
+}
+
+figure section article .inner .txt h2{
+	font-size: 20px;
+	font-family: "arial";
+	color: #222;
+	margin-bottom: 2vh;
+}
+
+figure section article .inner .txt p{
+	font-size: 12px;
+	margin-bottom: 3vh;
+	color: #777;
+}
+
+figure section article .inner .txt ul{
+	display: flex;
+	justify-content: space-around;
+}
+
+figure section article .inner ul li{
+	cursor: pointer;
+	opacity: 0.6;
+	transition: 0.5s;
+}
+
+figure section article .inner .txt ul li.play{
+	transform: scale(1.5); /* 가운데 재생 버튼만 1.5배 확대 */
+	opacity: 0.9;
+}
+
+figure section article .inner .txt ul li:hover{
+	transform: scale(1.5); /* 좌우 버튼은 마우스 호버 시 1.5배 확대 */
+	opacity: 0.8;
+}
+
+figure section article .inner .txt ul li.play:hover{
+	transform: scale(2); /* 재생 버튼은 마우스 호버 시 2배로 확대 */
+	opacity: 1;
+}
+
+/* after, before에 on 클래스가 붙으면 무한 회전하도록 애니메이션 키프레임 지정 */
+figure section article .inner .pic.on::after{
+	animation: ani 4s linear infinite;
+}
+
+figure section article .inner .pic.on::before{
+	animation: ani2 4s linear infinite;
+}
+
+/* 
+	좌우 버튼 css 
+*/
+
+/* 이전 곡 */
+figure .buttonPrev{
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-20vw, -50%);
+	display: flex;
+	align-items: center;
+	text-align: left;
+	cursor: pointer;
+}
+
+figure .buttonPrev span{
+	font: 11px/1 "arial";
+	color: #fff;
+	opacity: 1;
+	transform: translateX(30%);
+	transition: 0.5s;
+}
+
+figure .buttonPrev::before{ /* 이전 곡 가상 요소 */
+	content: "";
+	display: block;
+	width: 100%;
+	height: 1px;
+	background: #fff;
+	position: absolute;
+	top: 50%;
+	left: 0px;
+	transform-origin: left center;
+	transform: rotate(-180deg);
+	transition: 0.5s;
+}
+
+figure .buttonPrev::after{ /* 이전 곡 가상 요소 */
+	content: "";
+	display: block;
+	width: 100%;
+	height: 1px;
+	background: #fff;
+	position: absolute;
+	bottom: 50%;
+	left: 0px;
+	transform-origin: left center;
+	transform: rotate(180deg);
+	transition: 0.5s;
+}
+
+figure .buttonPrev:hover span{
+	opacity: 0;
+	transform: translateX(100%);
+}
+
+figure .buttonPrev:hover::before{
+	transform: rotate(-30deg);
+}
+
+figure .buttonPrev:hover::after{
+	transform: rotate(30deg);
+}
+
+/* 다음 곡  */
+figure .buttonNext{
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	top: 50%;
+	right: 50%;
+	transform: translate(20vw, -50%);
+	display: flex;
+	align-items: center;
+	text-align: right;
+	cursor: pointer;
+}
+
+figure .buttonNext span{
+	font: 11px/1 "arial";
+	color: #fff;
+	opacity: 1;
+	transform: translateX(-30%);
+	transition: 0.5s;
+}
+
+figure .buttonNext::before{ /* 다음 곡 가상 요소 */
+	content: "";
+	display: block;
+	width: 100%;
+	height: 1px;
+	background: #fff;
+	position: absolute;
+	top: 50%;
+	left: 0px;
+	transform-origin: right center;
+	transform: rotate(180deg);
+	transition: 0.5s;
+}
+
+figure .buttonNext::after{ /* 다음 곡 가상 요소 */
+	content: "";
+	display: block;
+	width: 100%;
+	height: 1px;
+	background: #fff;
+	position: absolute;
+	bottom: 50%;
+	left: 0px;
+	transform-origin: right center;
+	transform: rotate(-180deg);
+	transition: 0.5s;
+}
+
+figure .buttonNext:hover span{
+	opacity: 0;
+	transform: translateX(-100%);
+}
+
+figure .buttonNext:hover::before{
+	transform: rotate(30deg);
+}
+
+figure .buttonNext:hover::after{
+	transform: rotate(-30deg);
+}
+
+/* 
+	Keyframes
+*/
+
+/* 앨범 커버 이미지 회전 키프레임 */
+@keyframes ani{
+	0%{
+		transform: rotate(0deg);
+	}
+	100%{
+		transform: rotate(360deg);
+	}
+}
+
+/* 앨범 커버 그림자 회전 키프레임 */
+@keyframes ani2{
+	0%{
+		transform: translateY(10%) rotate(0deg);
+	}
+	100%{
+		transform: translateY(10%) rotate(360deg);
+	}
+}
