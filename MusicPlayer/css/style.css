@@ -72,8 +72,8 @@ figure section{
 	height: 65vh;
 	position: absolute;
 	left: 50%;
-	top: 50%;
-	margin-top: -32vh;
+	top: 140%; /* 세로 위치값 조정 */
+	margin-top: -25vh; /* 세로 위치값 조정 */
 	margin-left: -10vw;
 	border: 1px solid aqua;
 }
@@ -103,5 +103,12 @@ figure section article .inner{
 	box-shadow: 10px 10px 20px rgba(0,0,0, 0.1);
 	opacity: 0.6; /* 투명도 낮춤으로 비활성 */
 	transform: scale(0.8); /* 축소시켜서 비활성 */
+	transition: opacity 1s, transform 1s;
+}
+
+/* on 클래스 */
+figure section article.on .inner{
+	opacity: 0.9;
+	transform: scale(1.1);
 }
 
