@@ -14,3 +14,289 @@ li {
 a {
 	text-decoration: none;
 }
+body{
+	background: #efefef;
+}
+
+/* 
+header : 왼쪽 메뉴 영역
+main : 오른쪽 이미지 출력 영역
+*/
+
+/* header */
+header{
+	width: 400px;
+	height: 100%;
+	background: linear-gradient(45deg, aqua, royalblue);
+	position: fixed; /* 회면 왼쪽에 고정 */
+	top: 0px;
+	left: 0px;
+	transition: 0.5s;
+}
+
+/* 헤더 로고 */
+header h1{
+	font: bold 50px/1 'orbitron';
+	color: #fff;
+	letter-spacing: 1px;
+	position:absolute;
+	left: 50px;
+	top: 50%;
+	transform: translateY(-150%);
+}
+
+/* header 가상 선택자 활용 컨텐츠 추가 */
+header h1::before{
+	content: 'UI/UX DEVELOPMENT';
+	display: block;
+	font: 14px/1 'orbitron';
+	color: #fff;
+	letter-spacing: 2px;
+	position: absolute; /* h1 영역 기준 하단에 배치*/
+	left: 0px;
+	top: 140px;
+	opacity: 0.8;
+}
+
+header h1::after{
+	content: '';
+	display: block;
+	width: 150px;
+	height: 2px;
+	background: #fff;
+	margin-top: 20px;
+}
+
+/* header 영역 하단 버튼 */
+header ul{
+	position: absolute; /* ul 요소 자체를 하단에 배치 */
+	left: 40px;
+	bottom: 100px;
+}
+
+header ul li{
+	float: left; /* float를 사용하여 좌우 배치 */
+	margin-right: 10px;
+}
+
+header ul li a{
+	font-size: 20px;
+	color: #fff;
+}
+
+header ul li a span{
+	display: inline-block;
+	font-weight: bold;
+	opacity: 0.7;
+	transform: scale(0.7) translateX(-10px); /* 70%만큼 축소, 왼쪽으로 -10px 이동 */
+}
+
+/* main */
+main{
+	/*
+	main의 영역값을 설정하기 애매하다.
+	header 영역의 너비가 400px로 fiexd(고정)되어있기 때문에 사용자가 브라우저를 리사이징하더라도
+	왼쪽 400px를 제외한 나머지 크기로 자동 설정해야한다.
+	이때, main에 너빗값을 적용하지 않은 상태에서 margin-left로 header의 너비만큼 값을 지정하면
+	브라우저는 전체 너비에서 margin-left 값을 제외한 값으로 계산이 이루어져서 리사이징 처리가 수월하다.
+	*/
+	margin-left: 400px; /* 왼쪽 여백 추가 */
+	box-sizing: border-box;
+	padding: 20px;
+}
+
+/* 메인 태그 add, odd, even 버튼 */
+main ul{
+	width: 100%;
+	margin-bottom: 10px;
+	margin-right: 20px;
+}
+
+main ul::after{
+	content: "";
+	display: block;
+	clear: both;
+}
+
+main ul li{
+	float: right;
+	margin-right: 20px;
+	width: 100px;
+	height: 26px;
+}
+
+main ul li a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	font: bold 7px/26px "orbitron";
+	color: #aaa;
+	letter-spacing: 1px;
+	text-align: center;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.05);
+	background: #fff;
+}
+
+main ul li.on a{
+	background: linear-gradient(45deg, #67faf3, #58abf8);
+	box-shadow: 0px 5px 20px rgba(0, 255, 255, 0.527);
+	color: #fff;
+}
+
+/* 이미지 영역 설정 */
+main section{
+	width: 100%;
+}
+
+main section::after{
+	content: '';
+	display: block;
+	clear: both; /* float한 박스들의 바로 아래 박스에게 주변을 흐르지 않고 원래대로 배치하도록 하는 속성 */
+}
+
+main section article{
+	width: 20%;
+	float: left;
+	box-sizing: border-box;
+	padding: 12px;
+}
+
+main section article div{
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	border-radius: 4px;
+	box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+	box-sizing: border-box;
+	padding: 14px;
+}
+
+main section article div img{
+	width: 100%;
+}
+
+main section article div h2{
+	margin-top: 15px;
+	font: bold 11px/1 'orbitron';
+	letter-spacing: 1px;
+	color: #444;
+	margin-bottom: 5px;
+}
+
+main section article div p{
+	font: 10px/1.2 'arial';
+	color: #fff;
+	margin-bottom: 15px;
+}
+
+/*
+미디어 쿼리를 이용하여 반응형 웹 페이지 제작
+*/
+
+/* 브라우저 width가 1600px 미만일 때 
+header 영역 너비 약간 축소
+main 영역에 article 요소를 가로로 4개씩 배치
+*/
+@media screen and (max-width: 1599px) {
+	header{
+		width: 350px;
+	}
+	main{
+		margin-left: 350px;
+	}
+	main section article{
+		width: 25%;
+	}
+}
+
+/* 브라우저 width가 1200px 미만일 때 
+header를 왼쪽에서 상단으로 배치
+main  영역을 아래로 내리고, article을 가로 4개씩 배치
+*/
+@media screen and (max-width:1199px) {
+	header{
+		width: 100%;
+		height: 80px;
+		position: relative;
+	}
+	header h1{
+		font: bold 24px/1 'orbitron';
+		transform: translateY(-50%);
+	}
+	header h1::before,
+	header h1::after{
+		display: none;
+	}
+	header ul{
+		left: 83%;
+		bottom: 25px;
+	}
+	header ul li{
+		margin-right: 20px;
+	}
+	header ul li a{
+		font-size: 20px;
+	}
+	header ul li a span{
+		display: none;
+	}
+	main{
+		width: 100%;
+		margin-left: 0px;
+	}
+	main section article{
+		width: 25%;
+	}
+}
+
+/* 브라우저 width가 900px 미만일 때 
+article은 가로로 3개씩 변경
+header의 ul 위치 조정
+*/
+@media screen and (max-width:899px) {
+	header ul{
+		left: 80%;
+	}
+	main section article{
+		width: 33.333%;
+	}
+}
+
+/* 브라우저 width가 680px 미만일 때 
+article은 가로로 2씩 변경
+header의 ul 위치 조정
+*/
+@media screen and (max-width:679px) {
+	header ul{
+		left: 70%;
+	}
+	main section article{
+		width: 50%;
+	}
+}
+
+/* 브라우저 width가 540px 미만일 때 
+article은 가로로 1씩 변경
+header에서 로고를 제외한 메뉴 숨김 (매우 좁기 때문)
+*/
+@media screen and (max-width:539px) {
+	header ul{
+		display: none;
+	}
+	main ul{
+		margin-right: 0px;
+		box-sizing: border-box;
+		padding: 0px 13px;
+	}
+	main ul li{
+		margin-right: 2%;
+		width: 32%;
+	}
+	main ul li:nth-of-type(1){
+		margin-right: 0%;
+	}
+	main section article{
+		width: 100%;
+	}
+}
